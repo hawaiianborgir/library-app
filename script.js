@@ -34,16 +34,21 @@ function displayLibrary() {
 function insertNewRow() {
     const tableRow = document.createElement("tr");
     
-    tableBody.appendChild(tableRow);
+    if (tableBody.hasChildNodes()) {
+            const firstTableRow = tableBody.children[0];
+            tableBody.insertBefore(tableRow, firstTableRow);
+    } else {
+        tableBody.appendChild(tableRow);
+    }
 
     for (let i=0; i < 6; i++) {
-        const tableData = document.createElement("td");
+        const tableData = document.createElement("td");        
         tableRow.appendChild(tableData);
     }
 };
 
 function insertNewBook(book) {
-    const tableRow = document.querySelector("tbody tr:last-child")
+    const tableRow = document.querySelector("tbody tr:first-child")
     tableRow.children[0].textContent = `${book.title}`;
     tableRow.children[1].textContent = `${book.author}`;
     tableRow.children[2].textContent = `${book.year}`;
