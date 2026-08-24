@@ -1,5 +1,14 @@
 const myLibrary = [];
+
 const tableBody = document.querySelector("tbody");
+
+const form = document.querySelector("form")
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+const yearInput = document.querySelector("#year");
+const pagesInput = document.querySelector("#pages");
+const readInput = document.querySelector("#read");
+
 
 
 
@@ -7,28 +16,20 @@ function Book(title, author, pages, year, read) {
     if(!new.target) {
         throw Error("Must use the new operator to call the function");
     }
-    this.id = crypto.randomUUID()
+    
     this.title = title;
     this.author = author;
-    this.pages = pages;
     this.year = year;
+    this.pages = pages;
     this.isRead = read;
+    this.id = crypto.randomUUID();
 }
+
 
 function addBookToLibrary(title, author, pages, year, isRead) {
-    let bookName = title.replaceAll("");
-
-    bookName = new Book(title, author, pages, year, isRead);
-
-    myLibrary.push(bookName);
+    let book = new Book(title, author, pages, year, isRead);
+    myLibrary.push(book);
 }
-
-function displayLibrary() {
-    for (let book of myLibrary) {
-        console.log(book)
-    }
-}
-
 
 
 function insertNewRow() {
@@ -46,6 +47,10 @@ function insertNewRow() {
         tableRow.appendChild(tableData);
     }
 };
+
+function uniqueID(book) {
+    book.id = crypto.randomUUID()
+}
 
 function insertNewBook(book) {
     const tableRow = document.querySelector("tbody tr:first-child")
@@ -78,7 +83,18 @@ function currentLibrary(myLibrary) {
         insertNewBook(book);
     }
 }
-
 currentLibrary(myLibrary)
 
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const formData = new FormData(form);
+    const formObj = Object.fromEntries(formData)
+    uniqueID(formObj)
+    insertNewRow()
+    insertNewBook(formObj)
+    console.log(formObj)
+})
+
+console.log(myLibrary)
 // displayLibrary()
