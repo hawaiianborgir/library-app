@@ -42,7 +42,7 @@ function insertNewRow() {
         tableBody.appendChild(tableRow);
     }
 
-    for (let i=0; i < 6; i++) {
+    for (let i=0; i < 7; i++) {
         const tableData = document.createElement("td");        
         tableRow.appendChild(tableData);
     }
@@ -52,8 +52,17 @@ function uniqueID(book) {
     book.id = crypto.randomUUID()
 }
 
+function createDelButton() {
+    const delButton = document.createElement("button");
+    delButton.textContent = "X";   
+    delButton.classList.add("del-button");
+    return delButton;
+}
+
 function insertNewBook(book) {
     const tableRow = document.querySelector("tbody tr:first-child")
+    const delButton = createDelButton();
+
     tableRow.children[0].textContent = `${book.title}`;
     tableRow.children[1].textContent = `${book.author}`;
     tableRow.children[2].textContent = `${book.year}`;
@@ -64,7 +73,9 @@ function insertNewBook(book) {
         tableRow.children[4].textContent = "no";
     }
     tableRow.children[5].textContent = `${book.id}`;
+    tableRow.children[6].appendChild(delButton);    
 }
+
 
 addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, false);
@@ -96,5 +107,11 @@ form.addEventListener("submit", (e) => {
     console.log(formObj)
 })
 
-console.log(myLibrary)
-// displayLibrary()
+const delButtons = document.querySelectorAll(".del-button");
+
+delButtons.forEach((delButton) => {
+    delButton.addEventListener("click", (e) => {
+        const currentTR = e.target.closest("tr")
+        tableBody.removeChild(currentTR)
+    })
+})
