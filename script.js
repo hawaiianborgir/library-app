@@ -96,7 +96,6 @@ function currentLibrary(myLibrary) {
 }
 currentLibrary(myLibrary)
 
-
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     const formData = new FormData(form);
@@ -104,14 +103,13 @@ form.addEventListener("submit", (e) => {
     uniqueID(formObj)
     insertNewRow()
     insertNewBook(formObj)
-    console.log(formObj)
 })
 
-const delButtons = document.querySelectorAll(".del-button");
-
-delButtons.forEach((delButton) => {
-    delButton.addEventListener("click", (e) => {
-        const currentTR = e.target.closest("tr")
-        tableBody.removeChild(currentTR)
-    })
+// Event Delegation
+tableBody.addEventListener("click", (e) => {
+    const item = e.target.closest(".del-button");
+    if (!item) return;
+    
+    const currentTR = item.closest("tr");
+    tableBody.removeChild(currentTR);
 })
