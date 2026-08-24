@@ -1,4 +1,7 @@
 const myLibrary = [];
+const tableBody = document.querySelector("tbody");
+
+
 
 function Book(title, author, pages, year, read) {
     if(!new.target) {
@@ -26,6 +29,32 @@ function displayLibrary() {
     }
 }
 
+
+
+function insertNewRow() {
+    const tableRow = document.createElement("tr");
+    
+    tableBody.appendChild(tableRow);
+
+    for (let i=0; i < 6; i++) {
+        const tableData = document.createElement("td");
+        tableRow.appendChild(tableData);
+    }
+};
+
+function insertNewBook(book) {
+    const tableRow = document.querySelector("tbody tr:last-child")
+    tableRow.children[0].textContent = `${book.title}`;
+    tableRow.children[1].textContent = `${book.author}`;
+    tableRow.children[2].textContent = `${book.year}`;
+    tableRow.children[3].textContent = `${book.pages}`;
+    tableRow.children[4].textContent = `${book.isRead}`;
+    tableRow.children[5].textContent = `${book.id}`;
+}
+
+
+
+
 addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, false);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, false);
@@ -37,4 +66,16 @@ addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 194, 1953, true);
 addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, false);
 addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, false);
 
-displayLibrary()
+insertNewRow()
+insertNewBook(myLibrary[0])
+
+function libraryToTable(myLibrary) {
+    for (let book of myLibrary) {
+        insertNewRow();
+        insertNewBook(book);
+    }
+}
+
+libraryToTable(myLibrary)
+
+// displayLibrary()
