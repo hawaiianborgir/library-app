@@ -59,19 +59,27 @@ function createDelButton() {
     return delButton;
 }
 
+function createReadButton(book) {
+    const readButton = document.createElement("button");
+    if (book.isRead) {
+        readButton.textContent = "yes";
+    } else {
+        readButton.textContent = "no";
+    };
+    readButton.classList.add("read-button");
+    return readButton;
+}
+
 function insertNewBook(book) {
     const tableRow = document.querySelector("tbody tr:first-child")
     const delButton = createDelButton();
+    const readButton = createReadButton(book);
 
     tableRow.children[0].textContent = `${book.title}`;
     tableRow.children[1].textContent = `${book.author}`;
     tableRow.children[2].textContent = `${book.year}`;
     tableRow.children[3].textContent = `${book.pages}`;
-    if (book.isRead) {
-        tableRow.children[4].textContent = "yes";
-    } else {
-        tableRow.children[4].textContent = "no";
-    }
+    tableRow.children[4].appendChild(readButton);
     tableRow.children[5].textContent = `${book.id}`;
     tableRow.children[6].appendChild(delButton);    
 }
