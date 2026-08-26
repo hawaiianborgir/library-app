@@ -62,6 +62,7 @@ function createDelButton() {
 function createReadButton(book) {
     const readButton = document.createElement("button");
     readButton.textContent = `${book.isRead}`;
+    readButton.classList.add("read-button");
     return readButton;
 }
 
@@ -108,9 +109,19 @@ currentLibrary(myLibrary)
 //     insertNewBook(formObj)
 // })
 
+Book.prototype.changeReadStatus = function () {
+    if (this.isRead === "yes") {
+        this.isRead = "no";
+    } else {
+        this.isRead = "yes";
+    };
+};
+
 form.addEventListener("submit", (e) => {
     e.preventDefault()
-    const book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readInput.value);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readInput.value);
+    myLibrary.push(book);
+    console.log(myLibrary[myLibrary.length-1]);
     insertNewRow();
     insertNewBook(book);
 });
@@ -123,3 +134,23 @@ tableBody.addEventListener("click", (e) => {
     const currentTR = item.closest("tr");
     tableBody.removeChild(currentTR);
 });
+
+
+
+// tableBody.addEventListener("click", (e) => {
+//     const item = e.target.closest(".read-button");
+//     if (!item) return;
+
+//     changeReadStatus(item);
+// })
+
+tableBody.addEventListener("click", (e) => {
+        const readButton = e.target.closest(".read-button");
+        if (!readButton) return;
+
+        const uniqueID = readButton.closest("tr").children[5].textContent;
+        let uniqueBook = myLibrary.find(item => item.id == uniqueID);
+
+        uniqueBook.changeReadStatus(); 
+        readButton.textContent = uniqueBook.isRead;
+    })
