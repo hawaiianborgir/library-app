@@ -48,9 +48,9 @@ function insertNewRow() {
     }
 };
 
-function uniqueID(book) {
-    book.id = crypto.randomUUID()
-}
+// function uniqueID(book) {
+//     book.id = crypto.randomUUID()
+// }
 
 function createDelButton() {
     const delButton = document.createElement("button");
@@ -61,12 +61,7 @@ function createDelButton() {
 
 function createReadButton(book) {
     const readButton = document.createElement("button");
-    if (book.isRead) {
-        readButton.textContent = "yes";
-    } else {
-        readButton.textContent = "no";
-    };
-    readButton.classList.add("read-button");
+    readButton.textContent = `${book.isRead}`;
     return readButton;
 }
 
@@ -85,16 +80,16 @@ function insertNewBook(book) {
 }
 
 
-addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, false);
-addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, false);
-addBookToLibrary("1984", "George Orwell", 328, 1949, false);
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, true);
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, 1925, true);
-addBookToLibrary("Brave New World", "Aldous Huxley", 311, 1932, false);
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 194, 1953, true);
-addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, false);
-addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, false);
+addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, "yes");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, "no");
+addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, "no");
+addBookToLibrary("1984", "George Orwell", 328, 1949, "no");
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, "yes");
+addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, 1925, "yes");
+addBookToLibrary("Brave New World", "Aldous Huxley", 311, 1932, "no");
+addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 194, 1953, "yes");
+addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, "no");
+addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, "no");
 
 function currentLibrary(myLibrary) {
     for (let book of myLibrary) {
@@ -104,14 +99,21 @@ function currentLibrary(myLibrary) {
 }
 currentLibrary(myLibrary)
 
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault()
+//     const formData = new FormData(form);
+//     const formObj = Object.fromEntries(formData)
+//     uniqueID(formObj)
+//     insertNewRow()
+//     insertNewBook(formObj)
+// })
+
 form.addEventListener("submit", (e) => {
     e.preventDefault()
-    const formData = new FormData(form);
-    const formObj = Object.fromEntries(formData)
-    uniqueID(formObj)
-    insertNewRow()
-    insertNewBook(formObj)
-})
+    const book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readInput.value);
+    insertNewRow();
+    insertNewBook(book);
+});
 
 // Event Delegation
 tableBody.addEventListener("click", (e) => {
@@ -120,4 +122,4 @@ tableBody.addEventListener("click", (e) => {
     
     const currentTR = item.closest("tr");
     tableBody.removeChild(currentTR);
-})
+});
