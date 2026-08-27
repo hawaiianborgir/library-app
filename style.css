@@ -126,7 +126,7 @@ tfoot {
     justify-items: center;
     padding: 10px;
 }
-h3, h1{
+h3{
     text-align: center;
 }
 .new-button {
@@ -211,6 +211,14 @@ legend {
 }
 button:active {
     transform: scale(0.98);
+}
+
+.new-button:hover,
+.read-button:hover,
+.del-button:hover,
+.yes-option > *:hover,
+.no-option > *:hover {
+    cursor: pointer;
 }
 /* ===== */
 
