@@ -108,15 +108,48 @@ tfoot {
 
 
 .main-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "sidebar content";
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "sidebar content";
+    gap: 30px;
+}
+.form-container {
+    height: 400px;
+    grid-area: sidebar;
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    align-self: center;
+    border: 1px solid grey;
+    border-radius: 15px;
+    background-color: lightgray;
+    justify-items: center;
+}
+h3, h1{
+    text-align: center;
+}
+.new-button {
+    width: 200px;
+    height: 40px;
+    align-self: center;
 }
 
-.form-container {
-  grid-area: sidebar;
+.input-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0px 35px;
 }
+
 
 .table-container {
-  grid-area: content;
+    grid-area: content;
+}
+
+/* ===== */
+
+input {
+    width: 150px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }

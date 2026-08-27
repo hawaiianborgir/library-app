@@ -48,9 +48,6 @@ function insertNewRow() {
     }
 };
 
-// function uniqueID(book) {
-//     book.id = crypto.randomUUID()
-// }
 
 function createDelButton() {
     const delButton = document.createElement("button");
@@ -67,7 +64,7 @@ function createReadButton(book) {
 }
 
 function insertNewBook(book) {
-    const tableRow = document.querySelector("tbody tr:first-child")
+    const tableRow = document.querySelector("tbody tr:first-child");
     const delButton = createDelButton();
     const readButton = createReadButton(book);
 
@@ -96,18 +93,10 @@ function currentLibrary(myLibrary) {
     for (let book of myLibrary) {
         insertNewRow();
         insertNewBook(book);
-    }
-}
-currentLibrary(myLibrary)
+    };
+};
 
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault()
-//     const formData = new FormData(form);
-//     const formObj = Object.fromEntries(formData)
-//     uniqueID(formObj)
-//     insertNewRow()
-//     insertNewBook(formObj)
-// })
+currentLibrary(myLibrary)
 
 Book.prototype.changeReadStatus = function () {
     if (this.isRead === "yes") {
@@ -134,15 +123,6 @@ tableBody.addEventListener("click", (e) => {
     const currentTR = item.closest("tr");
     tableBody.removeChild(currentTR);
 });
-
-
-
-// tableBody.addEventListener("click", (e) => {
-//     const item = e.target.closest(".read-button");
-//     if (!item) return;
-
-//     changeReadStatus(item);
-// })
 
 tableBody.addEventListener("click", (e) => {
         const readButton = e.target.closest(".read-button");
