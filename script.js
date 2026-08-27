@@ -7,7 +7,7 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const yearInput = document.querySelector("#year");
 const pagesInput = document.querySelector("#pages");
-const readInput = document.querySelector("#read");
+
 
 
 
@@ -108,11 +108,13 @@ Book.prototype.changeReadStatus = function () {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault()
+    const readInput = document.querySelector("input[name='isRead']:checked");
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readInput.value);
     myLibrary.push(book);
     console.log(myLibrary[myLibrary.length-1]);
     insertNewRow();
     insertNewBook(book);
+    form.reset()
 });
 
 // Event Delegation
