@@ -13,15 +13,24 @@
             <h3 class="caption">Please input your new book information for the library</h3>
             <div class="input-container">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" required>
                 <label for="author">Author</label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" required>
                 <label for="year">Year</label>
-                <input type="text" id="year" name="year">
+                <input type="number" id="year" name="year" required>
                 <label for="pages">Pages</label>
-                <input type="text" id="pages" name="pages">
-                <label for="isRead">Read</label>
-                <input type="text" id="read" name="isRead">
+                <input type="number" id="pages" name="pages" required>
+                <fieldset>
+                    <legend>Have you read it?</legend>
+                    <div class="yes-option">
+                        <input type="radio" id="yes" name="isRead" value="yes">
+                        <label for="yes">Yes</label>
+                    </div>
+                    <div class="no-option">
+                        <input type="radio" id="no" name="isRead" value="no">
+                        <label for="no">No</label>
+                    </div>
+                </fieldset>
             </div>
             <button type="submit" class="new-button">New Book</button>
         </form>
