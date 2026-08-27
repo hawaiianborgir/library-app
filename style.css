@@ -143,8 +143,8 @@ h3, h1{
     gap: 0px 35px;
 }
 input[type="text"],
-input[type="number"] {
-    width: 150px;
+input[type="tel"] {
+    /* width: 150px; */
     padding: 0;
     margin: 0;
     box-sizing: border-box;
