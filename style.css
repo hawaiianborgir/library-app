@@ -158,28 +158,16 @@ fieldset {
 
     display: flex;
     gap: 20px;
-    /* grid-template: 1fr 1fr / 1fr 2fr;
-    grid-template-areas: 
-        "legend radio1"
-        "legend radio2"; */
 }
 
 legend {
   margin-bottom: 8px;
   padding: 0;
-  /* grid-area: legend; */
-}
-.yes-option {
-    /* grid-area: radio1; */
-}
-.no-option {
-    /* grid-area: radio2; */
 }
 .yes-option,
 .no-option {
     display: flex;
     align-items: center;
-    /* justify-content: start; */
     gap: 10px;
 }
 
@@ -220,5 +208,4 @@ button:active {
 .no-option > *:hover {
     cursor: pointer;
 }
-/* ===== */
 
