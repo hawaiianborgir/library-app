@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="header">
+        <div class="sidebar">
             <a href="https://github.com/hawaiianborgir" target="_blank" rel="noopener noreferrer" class="nav-button" aria-current="page">
                 <img src="" alt="" class="logo-icon">
                 <span class="logo-font">Library</span>
@@ -18,9 +18,23 @@
         </div>
 
         <div class="card-status">
-            <div class="total-status"></div>
-            <div class="read-status"></div>
+            <div class="total-status">
+                <output class="total-output"></output>
+                <p>Total</p>
+            </div>
+            <div class="read-status"><output class="read-output"></output>
+            <p>Read</p></div>
             <div class="not-read-status"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="book-card">
+                <p class="book-title"></p>
+                <p class="book-author"></p>
+                <p class="book-year"></p>
+                <p class="book-pages"></p>
+                <p class="book-read"></p>
+            </div>
         </div>
 
         <form class="form-container">

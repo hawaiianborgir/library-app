@@ -1,6 +1,8 @@
 const myLibrary = [];
 
-const tableBody = document.querySelector("tbody");
+const mainContent = document.querySelector(".main-content");
+
+// const tableBody = document.querySelector("tbody");
 
 const form = document.querySelector("form")
 const titleInput = document.querySelector("#title");
@@ -31,22 +33,50 @@ function addBookToLibrary(title, author, pages, year, isRead) {
     myLibrary.push(book);
 }
 
+function insertNewCard() {
+    const card = document.createElement("div")
+    card.classList.add("book-card")
 
-function insertNewRow() {
-    const tableRow = document.createElement("tr");
-    
-    if (tableBody.hasChildNodes()) {
-            const firstTableRow = tableBody.children[0];
-            tableBody.insertBefore(tableRow, firstTableRow);
+    if (mainContent.hasChildNodes()) {
+        const firstCard = mainContent.children[0];
+        mainContent.insertBefore(card, firstCard);
     } else {
-        tableBody.appendChild(tableRow);
+        mainContent.appendChild(card);
     }
+}
 
-    for (let i=0; i < 7; i++) {
-        const tableData = document.createElement("td");        
-        tableRow.appendChild(tableData);
-    }
-};
+function dataRegister(book, card, data) {
+    const pElement = document.createElement("p");
+    pElement.classList.add(`book-${data}`);
+    pElement.textContent = `${book[data]}`;
+    card.appendChild(title);
+}
+
+function insertNewBook(book) {
+    const card = insertNewCard()
+
+    dataRegister(book, card, "title");
+    dataRegister(book, card, "author");
+    dataRegister(book, card, "year");
+    dataRegister(book, card, "pages");
+    dataRegister(book, card, "read");
+}
+
+// function insertNewRow() {
+//     const tableRow = document.createElement("tr");
+    
+//     if (tableBody.hasChildNodes()) {
+//             const firstTableRow = tableBody.children[0];
+//             tableBody.insertBefore(tableRow, firstTableRow);
+//     } else {
+//         tableBody.appendChild(tableRow);
+//     }
+
+//     for (let i=0; i < 7; i++) {
+//         const tableData = document.createElement("td");        
+//         tableRow.appendChild(tableData);
+//     }
+// };
 
 
 function createDelButton() {
@@ -63,31 +93,31 @@ function createReadButton(book) {
     return readButton;
 }
 
-function insertNewBook(book) {
-    const tableRow = document.querySelector("tbody tr:first-child");
-    const delButton = createDelButton();
-    const readButton = createReadButton(book);
+// function insertNewBook(book) {
+//     const tableRow = document.querySelector("tbody tr:first-child");
+//     const delButton = createDelButton();
+//     const readButton = createReadButton(book);
 
-    tableRow.children[0].textContent = `${book.title}`;
-    tableRow.children[1].textContent = `${book.author}`;
-    tableRow.children[2].textContent = `${book.year}`;
-    tableRow.children[3].textContent = `${book.pages}`;
-    tableRow.children[4].appendChild(readButton);
-    tableRow.children[5].textContent = `${book.id}`;
-    tableRow.children[6].appendChild(delButton);    
-}
+//     tableRow.children[0].textContent = `${book.title}`;
+//     tableRow.children[1].textContent = `${book.author}`;
+//     tableRow.children[2].textContent = `${book.year}`;
+//     tableRow.children[3].textContent = `${book.pages}`;
+//     tableRow.children[4].appendChild(readButton);
+//     tableRow.children[5].textContent = `${book.id}`;
+//     tableRow.children[6].appendChild(delButton);    
+// }
 
 
 addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, "yes");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, "no");
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, "no");
-addBookToLibrary("1984", "George Orwell", 328, 1949, "no");
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, "yes");
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, 1925, "yes");
-addBookToLibrary("Brave New World", "Aldous Huxley", 311, 1932, "no");
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 194, 1953, "yes");
-addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, "no");
-addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, "no");
+// addBookToLibrary("1984", "George Orwell", 328, 1949, "no");
+// addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, "yes");
+// addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, 1925, "yes");
+// addBookToLibrary("Brave New World", "Aldous Huxley", 311, 1932, "no");
+// addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 194, 1953, "yes");
+// addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, "no");
+// addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, "no");
 
 function currentLibrary(myLibrary) {
     for (let book of myLibrary) {
