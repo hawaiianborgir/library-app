@@ -48,7 +48,17 @@ function insertNewCard() {
 function dataRegister(book, card, data) {
     const pElement = document.createElement("p");
     pElement.classList.add(`book-${data}`);
-    pElement.textContent = `${book[data]}`;
+    
+    if (data === "read") {
+        if (`${book[data]}` === true) {
+            pElement.textContent = "✓";
+        } else {
+            pElement.textContent = "✗"
+        }
+    } else {
+        pElement.textContent = `${book[data]}`;
+    }
+    
     card.appendChild(title);
 }
 
@@ -108,9 +118,9 @@ function createReadButton(book) {
 // }
 
 
-addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, "yes");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, "no");
-addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, "no");
+// addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, "yes");
+// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, 1937, "no");
+// addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, "no");
 // addBookToLibrary("1984", "George Orwell", 328, 1949, "no");
 // addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, "yes");
 // addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, 1925, "yes");
