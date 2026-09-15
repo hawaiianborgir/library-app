@@ -129,14 +129,14 @@ function createReadButton(book) {
 // addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 224, 1951, "no");
 // addBookToLibrary("Slaughterhouse-Five", "Kurt Vonnegut", 275, 1969, "no");
 
-function currentLibrary(myLibrary) {
-    for (let book of myLibrary) {
-        insertNewRow();
-        insertNewBook(book);
-    };
-};
+// function currentLibrary(myLibrary) {
+//     for (let book of myLibrary) {
+//         insertNewRow();
+//         insertNewBook(book);
+//     };
+// };
 
-currentLibrary(myLibrary)
+// currentLibrary(myLibrary)
 
 Book.prototype.changeReadStatus = function () {
     if (this.isRead === "yes") {

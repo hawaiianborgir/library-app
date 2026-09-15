@@ -33,21 +33,21 @@
                 <p class="book-author">J.R.R. Tolkien</p>
                 <p class="book-year">1954</p>
                 <p class="book-pages">352</p>
-                <p class="book-read">✓</p>
+                <p class="book-read">Read: ✓</p>
             </div>
             <div class="book-card">
                 <p class="book-title">To Kill a Mockingbird</p>
                 <p class="book-author">Harper Lee</p>
                 <p class="book-year">1960</p>
                 <p class="book-pages">281</p>
-                <p class="book-read">✓</p>
+                <p class="book-read">Read: ✓</p>
             </div>
             <div class="book-card">
                 <p class="book-title">Pride and Prejudice</p>
                 <p class="book-author">Jane Austen</p>
                 <p class="book-year">1813</p>
                 <p class="book-pages">279</p>
-                <p class="book-read">✗</p>
+                <p class="book-read">Read: ✗</p>
             </div>
         </div>
 
@@ -62,37 +62,29 @@
                 <input type="tel" pattern="[0-9]{4}" inputmode="numeric" maxlength="4" id="year" name="year" required>
                 <label for="pages">Pages</label>
                 <input type="tel" inputmode="numeric" id="pages" name="pages" required>
-                <fieldset>
-                    <legend>Have you read it?</legend>
-                    <div class="yes-option">
-                        <input type="radio" id="yes" name="isRead" value="yes" required>
-                        <label for="yes">Yes</label>
-                    </div>
-                    <div class="no-option">
-                        <input type="radio" id="no" name="isRead" value="no" required>
-                        <label for="no">No</label>
-                    </div>
-                </fieldset>
+                <div class="checkbox-container">
+                    <input type="hidden" name="read" value="false">
+                    <label for="read">Have you read it?</label>
+                    <input type="checkbox" id="read" name="read" value="true">
+                </div>
             </div>
             <button type="submit" class="new-button">New Book</button>
         </form>
-        <div class="table-container">
-            <h1>Book List</h1>
-            <table>
-                <caption>Books available in the library</caption>
-                <thead>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Pages</th>
-                    <th scope="col">Read</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Delete</th>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+
+        <form>
+            <div>
+                <input
+                type="checkbox"
+                id="subscribeNews"
+                name="subscribe"
+                value="newsletter" />
+                <label for="subscribeNews">Subscribe to newsletter?</label>
+            </div>
+            <div>
+                <button type="submit">Subscribe</button>
+            </div>
+        </form>
+        
     </div>
 </body>
 </html>
