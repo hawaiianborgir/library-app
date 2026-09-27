@@ -89,12 +89,20 @@ Book.prototype.changeReadStatus = function () {
     };
 };
 
+function readStatus(readCheckbox) {
+    if (readCheckbox.checked) {
+        return "yes";
+    } else {
+        return "no";
+    }
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault()
     console.log("new book button was pushed")
 
     const readInput = document.querySelector("input[type='checkbox']");
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readInput.value);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readStatus(readInput));
     myLibrary.push(book);
     console.log(myLibrary[myLibrary.length-1]);
     insertNewBook(book);
