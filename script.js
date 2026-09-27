@@ -7,6 +7,7 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const yearInput = document.querySelector("#year");
 const pagesInput = document.querySelector("#pages");
+const formDialog = document.querySelector(".form-dialog")
 
 
 function Book(title, author, pages, year, read) {
@@ -104,7 +105,7 @@ form.addEventListener("submit", (e) => {
     const readInput = document.querySelector("input[type='checkbox']");
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readStatus(readInput));
     myLibrary.push(book);
-    console.log(myLibrary[myLibrary.length-1]);
+    console.log(myLibrary);
     insertNewBook(book);
     form.reset()
 });
