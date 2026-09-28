@@ -50,13 +50,16 @@ function dataRegister(book, card, data) {
     const pElement = document.createElement("p");
     pElement.classList.add(`book-${data}`);
     
-    if (data === "read") {
+    if (data === "isRead") {
         if (book[data] === true) {
-            pElement.textContent = "✓";
+            pElement.textContent = "Read: ✓";
         } else {
-            pElement.textContent = "✗"
+            pElement.textContent = "Read: ✗"
         }
-    } else {
+    } else if (data === "pages") {
+        pElement.textContent = `${book[data]} pages`
+    }
+    else {
         pElement.textContent = book[data];
     }
     
