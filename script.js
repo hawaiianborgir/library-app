@@ -46,23 +46,28 @@ function insertNewCard() {
     }
 }
 
-function dataRegister(book, card, data) {
-    const pElement = document.createElement("p");
-    pElement.classList.add(`book-${data}`);
-    
+function dataModifier(book, data) {
     if (data === "isRead") {
         if (book[data] === true) {
             pElement.textContent = "Read: ✓";
         } else {
-            pElement.textContent = "Read: ✗"
+            pElement.textContent = "Read: ✗";
         }
     } else if (data === "pages") {
-        pElement.textContent = `${book[data]} pages`
-    }
-    else {
+        pElement.textContent = `${book[data]} pages`;
+    } else if (data === "year") {
+        pElement.textContent = `Published: ${book[data]}`;
+    } else if (data === "author") {
+        pElement.textContent = `by ${book[data]}`;
+    } else {
         pElement.textContent = book[data];
     }
-    
+}
+
+function dataRegister(book, card, data) {
+    const pElement = document.createElement("p");
+    pElement.classList.add(`book-${data}`);
+    dataModifier(book, data);
     card.appendChild(pElement);
 }
 
