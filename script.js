@@ -29,6 +29,11 @@ function addBookToLibrary(title, author, pages, year, isRead) {
     myLibrary.push(book);
 }
 
+// Current Book, for array database only
+addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, true);
+addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, false);
+
 function insertNewCard() {
     const card = document.createElement("div")
     card.classList.add("book-card")
@@ -46,13 +51,13 @@ function dataRegister(book, card, data) {
     pElement.classList.add(`book-${data}`);
     
     if (data === "read") {
-        if (`${book[data]}` === true) {
+        if (book[data] === true) {
             pElement.textContent = "✓";
         } else {
             pElement.textContent = "✗"
         }
     } else {
-        pElement.textContent = `${book[data]}`;
+        pElement.textContent = book[data];
     }
     
     card.appendChild(pElement);
@@ -65,7 +70,7 @@ function insertNewBook(book) {
     dataRegister(book, card, "author");
     dataRegister(book, card, "year");
     dataRegister(book, card, "pages");
-    dataRegister(book, card, "read");
+    dataRegister(book, card, "isRead");
 }
 
 function createDelButton() {
@@ -92,9 +97,9 @@ Book.prototype.changeReadStatus = function () {
 
 function readStatus(readCheckbox) {
     if (readCheckbox.checked) {
-        return "yes";
+        return true;
     } else {
-        return "no";
+        return false;
     }
 }
 
@@ -102,10 +107,16 @@ form.addEventListener("submit", (e) => {
     e.preventDefault()
 
     const readInput = document.querySelector("input[type='checkbox']");
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, yearInput.value, readStatus(readInput));
+    let book = new Book(titleInput.value, authorInput.value, Number(pagesInput.value), Number(yearInput.value), readStatus(readInput));
+    
+    console.log(book.title);
+    console.log(book.isRead);
+    
     myLibrary.push(book);
     console.log(myLibrary);
-    // insertNewBook(book);
+
+    insertNewBook(book);
+
     form.reset()
     formDialog.close();
 });
