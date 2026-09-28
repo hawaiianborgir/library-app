@@ -64,7 +64,9 @@ function dataRegister(book, card, data) {
 }
 
 function insertNewBook(book) {
-    const card = insertNewCard()
+    insertNewCard();
+
+    const card = mainContent.firstElementChild;
 
     dataRegister(book, card, "title");
     dataRegister(book, card, "author");
