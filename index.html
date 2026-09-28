@@ -14,7 +14,7 @@
                 <img src="" alt="" class="logo-icon">
                 <span class="logo-font">Library</span>
             </a>
-            <button type="button">Add New Book</button>
+            <button type="button" command="show-modal" commandfor="form-dialog" class="open-button">Add New Book</button>
         </div>
 
         <div class="card-status">
@@ -30,28 +30,26 @@
         <div class="main-content">
             <div class="book-card">
                 <p class="book-title">The Two Towers</p>
-                <p class="book-author">J.R.R. Tolkien</p>
-                <p class="book-year">1954</p>
-                <p class="book-pages">352</p>
+                <p class="book-author">by J.R.R. Tolkien</p>
+                <p class="book-year">Published: 1954</p>
+                <p class="book-pages">352 pages</p>
                 <p class="book-read">Read: ✓</p>
             </div>
             <div class="book-card">
                 <p class="book-title">To Kill a Mockingbird</p>
-                <p class="book-author">Harper Lee</p>
-                <p class="book-year">1960</p>
-                <p class="book-pages">281</p>
+                <p class="book-author">by Harper Lee</p>
+                <p class="book-year">Published: 1960</p>
+                <p class="book-pages">281 pages</p>
                 <p class="book-read">Read: ✓</p>
             </div>
             <div class="book-card">
                 <p class="book-title">Pride and Prejudice</p>
-                <p class="book-author">Jane Austen</p>
-                <p class="book-year">1813</p>
-                <p class="book-pages">279</p>
+                <p class="book-author">by Jane Austen</p>
+                <p class="book-year">Published: 1813</p>
+                <p class="book-pages">279 pages</p>
                 <p class="book-read">Read: ✗</p>
             </div>
         </div>
-
-        <button command="show-modal" commandfor="form-dialog" class="open-button">Add New Book</button>
 
         <dialog id="form-dialog" closedby="closerequest">
             <form class="form-container">
@@ -75,20 +73,6 @@
             </form>
             <button command="close" commandfor="form-dialog" formmethod="dialog" class="close-button" autofocus>Close</button>
         </dialog>
-
-        <form>
-            <div>
-                <input
-                type="checkbox"
-                id="subscribeNews"
-                name="subscribe"
-                value="newsletter" />
-                <label for="subscribeNews">Subscribe to newsletter?</label>
-            </div>
-            <div>
-                <button type="submit">Subscribe</button>
-            </div>
-        </form>
         
     </div>
 </body>
