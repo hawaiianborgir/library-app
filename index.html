@@ -9,22 +9,27 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="sidebar">
+        <div class="head">
             <a href="https://github.com/hawaiianborgir" target="_blank" rel="noopener noreferrer" class="nav-button" aria-current="page">
                 <img src="" alt="" class="logo-icon">
-                <span class="logo-font">Library</span>
+                <span class="logo-font">Library App</span>
             </a>
             <button type="button" command="show-modal" commandfor="form-dialog" class="open-button">Add New Book</button>
         </div>
 
-        <div class="card-status">
+        <div class="sidebar">
             <div class="total-status">
                 <output class="total-output"></output>
                 <p>Total</p>
             </div>
-            <div class="read-status"><output class="read-output"></output>
-            <p>Read</p></div>
-            <div class="not-read-status"></div>
+            <div class="read-status">
+                <p>Read</p>
+                <output class="read-output"></output>
+            </div>
+            <div class="not-read-status">
+                <p>Not Read</p>
+                <output class="notread-output"></output>
+            </div>
         </div>
 
         <div class="main-content">
