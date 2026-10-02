@@ -76,10 +76,10 @@ body {
 
 .main-container {
     display: grid;
-    grid-template: 1fr 3fr / 1fr 1fr 1fr;
+    grid-template: 1fr 3fr / 1fr 4fr;
     grid-template-areas: 
-    	"head head head"
-      	"sidebar content content";    
+    	"head head"
+      	"sidebar content";    
 }
 .head {
   	grid-area: head;
@@ -91,6 +91,9 @@ body {
 }
 .main-content {
   	grid-area: content;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+	gap: 20px;
 }
 .book-card {
 	background-color: var(--card-bg-cl);
@@ -112,7 +115,7 @@ body {
     justify-items: center;
     padding: 10px;
 }
-h3{
+.caption{
     text-align: center;
 }
 .new-button {
