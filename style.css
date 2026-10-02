@@ -76,28 +76,36 @@ body {
 }
 
 .main-container {
+	height: 100dvh;
+	overflow: hidden;
     display: grid;
     grid-template: 1fr 3fr / 1fr 4fr;
     grid-template-areas: 
-    	"head head"
+    	"header header"
       	"sidebar content";    
 }
 .content-title {
-
+	color: var(--card-txt-cl);
+	font-weight: 1000;
 }
-.head {
-  	grid-area: head;
+.header {
+  	grid-area: header;
   	background-color: var(--header-cl);
 }
 .sidebar {
   	grid-area: sidebar;
 	background-color: var(--sidebar-cl);
 }
+.content {
+	grid-area: content;
+}
 .main-content {
-  	grid-area: content;
+	overflow-y: auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
 	gap: 20px;
+	
+	border: 2px solid red;
 }
 .book-card {
 	background-color: var(--card-bg-cl);
