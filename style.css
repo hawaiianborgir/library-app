@@ -54,19 +54,44 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 /* --RESET ENDS HERE-- */
-
+:root {
+	--page-bg-cl: #f4efe4;
+  --header-cl: #1f3d35;
+  --sidebar-cl: #2b2420;
+  --sidebar-txt-cl: #d9cfbb;
+  --active-hover-cl: #b8863b;
+  --card-bg-cl: #fffdf8;
+  --card-border-cl: #ddd2bd;
+  --card-title-cl: #2b2420;
+  --card-txt-cl: #6b5f53;
+  --button-cl: #2f5d50;
+  --del-button-cl: #a63d40;
+}
 
 
 .main-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas: "sidebar content";
+    grid-template: 1fr 3fr / 1fr 1fr 1fr;
+    grid-template-areas: 
+      "head head head"
+      "sidebar content content";
     gap: 30px;
     padding: 20px 20px;
 }
+.head {
+  grid-area: head;
+  background-color: ;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.main-content {
+  grid-area: content;
+}
+
+
 .form-container {
     height: 400px;
-    grid-area: sidebar;
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
     align-self: center;
@@ -85,7 +110,6 @@ h3{
     align-self: center;
     border-radius: 10px;
 }
-
 .input-container {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -100,31 +124,9 @@ input[type="tel"] {
     box-sizing: border-box;
 }
 
-fieldset {
-    border: none;
-    padding: 0;
-    min-width: 0;
-    width: 100%;
-
-    display: flex;
-    gap: 20px;
-}
-
-legend {
-  margin-bottom: 8px;
-  padding: 0;
-}
-.yes-option,
-.no-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
 
 
-.table-container {
-    grid-area: content;
-}
+
 
 .read-button {
     width: 40px;
