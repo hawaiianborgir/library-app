@@ -79,7 +79,7 @@ body {
 	height: 100dvh;
 	overflow: hidden;
     display: grid;
-    grid-template: 1fr 3fr / 1fr 4fr;
+    grid-template: 1fr 9fr / 1fr 4fr;
     grid-template-areas: 
     	"header header"
       	"sidebar content";    
@@ -108,6 +108,8 @@ body {
 	border: 2px solid red;
 }
 .book-card {
+	position: relative;
+
 	background-color: var(--card-bg-cl);
 	color: var(--card-txt-cl);
 }
@@ -160,6 +162,12 @@ input[type="tel"] {
     border-radius: 3px;
 }
 .del-button {
+	/* relative to the .book-card */
+	position: absolute; 
+	top: 0px;
+	right: 0px;
+
+
     background-color: rgb(186, 62, 62);
     color: white;
     font-weight: 600;
