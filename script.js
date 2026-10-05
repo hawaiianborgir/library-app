@@ -10,6 +10,7 @@ const pagesInput = document.querySelector("#pages");
 const formDialog = document.querySelector("#form-dialog")
 
 
+
 function Book(title, author, pages, year, read) {
     if(!new.target) {
         throw Error("Must use the new operator to call the function");
@@ -130,3 +131,37 @@ form.addEventListener("submit", (e) => {
     form.reset()
     formDialog.close();
 });
+
+// Event Delegation
+mainContent.addEventListener("click", (e) => {
+    const item = e.target.closest(".del-button");
+    if (!item) return;
+
+    const card = item.closest(".book-card");
+    mainContent.removeChild(card);
+
+    // dont forget to delete it from the object list
+})
+
+mainContent.addEventListener("click", (e) => {
+    const item = e.target.closest(".read-button");
+    if (!item) return;
+
+    const card = item.closest(".book-card");
+    const titleDisplay = card.querySelector(".book-title").textContent;
+    const book = myLibrary.find(book => book.title === titleDisplay)
+    let bookReadStatus = book.isRead;
+    console.log(`bookReadStatus: ${bookReadStatus}`);
+    let readDisplay = card.querySelector(".book-read");
+    console.log(`readDisplay: ${readDisplay.textContent}`)
+
+    if (bookReadStatus) {
+        book.isRead = false;
+        readDisplay.textContent = "Read: ✗";
+    } else {
+        book.isRead = true;
+        readDisplay.textContent = "Read: ✓";
+    }
+
+    // todo: integrate the prototype method
+})
