@@ -107,10 +107,10 @@ function createReadButton(book) {
 }
 
 Book.prototype.changeReadStatus = function () {
-    if (this.isRead === "yes") {
-        this.isRead = "no";
+    if (this.isRead === true) {
+        this.isRead = false;
     } else {
-        this.isRead = "yes";
+        this.isRead = true;
     };
 };
 
@@ -166,12 +166,10 @@ mainContent.addEventListener("click", (e) => {
     console.log(readDisplay);
 
     if (bookReadStatus) {
-        myLibrary[bookIndex].isRead = false;
+        myLibrary[bookIndex].changeReadStatus();
         readDisplay.textContent = "Read: ✗";
     } else {
-        myLibrary[bookIndex].isRead = true;
+        myLibrary[bookIndex].changeReadStatus();
         readDisplay.textContent = "Read: ✓";
     }
-
-    // todo: integrate the prototype method
 })
