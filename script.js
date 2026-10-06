@@ -158,16 +158,18 @@ mainContent.addEventListener("click", (e) => {
     if (!item) return;
 
     const card = item.closest(".book-card");
-    const titleDisplay = card.querySelector(".book-title");
-    const book = myLibrary.find(book => book.title === titleDisplay.textContent)
-    let bookReadStatus = book.isRead;
+    const cardId = card.dataset.bookId
+    const bookIndex = myLibrary.findIndex(book => book.id === cardId);
+    let bookReadStatus = myLibrary[bookIndex].isRead;
+    console.log(bookReadStatus);
     let readDisplay = card.querySelector(".book-read");
+    console.log(readDisplay);
 
     if (bookReadStatus) {
-        book.isRead = false;
+        myLibrary[bookIndex].isRead = false;
         readDisplay.textContent = "Read: ✗";
     } else {
-        book.isRead = true;
+        myLibrary[bookIndex].isRead = true;
         readDisplay.textContent = "Read: ✓";
     }
 
