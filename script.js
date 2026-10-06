@@ -31,9 +31,16 @@ function addBookToLibrary(title, author, pages, year, isRead) {
 }
 
 // Current Book, for array database only
+function addIdToCurrentBook() {
+    const cards = document.querySelectorAll(".book-card");
+    for (let i = 0; i < 3; i++) {
+        cards[i].dataset.bookId = myLibrary[i].id
+    }
+}
 addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
 addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, true);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, false);
+addIdToCurrentBook()
 
 function insertNewCard() {
     const card = document.createElement("div")
@@ -82,6 +89,7 @@ function insertNewBook(book) {
     dataRegister(book, card, "year");
     dataRegister(book, card, "pages");
     dataRegister(book, card, "isRead");
+    card.dataset.bookId = book.id;
 }
 
 function createDelButton() {
@@ -114,6 +122,7 @@ function readStatus(readCheckbox) {
     }
 }
 
+// Add New Book
 form.addEventListener("submit", (e) => {
     e.preventDefault()
 
@@ -136,9 +145,14 @@ form.addEventListener("submit", (e) => {
 mainContent.addEventListener("click", (e) => {
     const item = e.target.closest(".del-button");
     if (!item) return;
-
+    
+    console.log(myLibrary);
     const card = item.closest(".book-card");
+    const titleDisplay = card.querySelector(".book-title");
+    myLibrary = myLibrary.filter(book => book.title !== titleDisplay.textContent);
     mainContent.removeChild(card);
+    console.log(myLibrary);
+
 
     // dont forget to delete it from the object list
 })
@@ -148,12 +162,10 @@ mainContent.addEventListener("click", (e) => {
     if (!item) return;
 
     const card = item.closest(".book-card");
-    const titleDisplay = card.querySelector(".book-title").textContent;
-    const book = myLibrary.find(book => book.title === titleDisplay)
+    const titleDisplay = card.querySelector(".book-title");
+    const book = myLibrary.find(book => book.title === titleDisplay.textContent)
     let bookReadStatus = book.isRead;
-    console.log(`bookReadStatus: ${bookReadStatus}`);
     let readDisplay = card.querySelector(".book-read");
-    console.log(`readDisplay: ${readDisplay.textContent}`)
 
     if (bookReadStatus) {
         book.isRead = false;
