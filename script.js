@@ -146,15 +146,11 @@ mainContent.addEventListener("click", (e) => {
     const item = e.target.closest(".del-button");
     if (!item) return;
     
-    console.log(myLibrary);
     const card = item.closest(".book-card");
-    const titleDisplay = card.querySelector(".book-title");
-    myLibrary = myLibrary.filter(book => book.title !== titleDisplay.textContent);
+    const cardId = card.dataset.bookId
+    const bookIndex = myLibrary.findIndex(book => book.id === cardId);
+    myLibrary.splice(bookIndex,1);
     mainContent.removeChild(card);
-    console.log(myLibrary);
-
-
-    // dont forget to delete it from the object list
 })
 
 mainContent.addEventListener("click", (e) => {
