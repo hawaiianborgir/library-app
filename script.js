@@ -55,7 +55,7 @@ function insertNewCard() {
 }
 
 function dataModifier(book, data, element) {
-    if (data === "isRead") {
+    if (data === "read") {
         if (book[data] === true) {
             element.textContent = "Read: ✓";
         } else {
@@ -88,7 +88,6 @@ function insertNewBook(book) {
     dataRegister(book, card, "author");
     dataRegister(book, card, "year");
     dataRegister(book, card, "pages");
-    dataRegister(book, card, "isRead");
     card.dataset.bookId = book.id;
 }
 
@@ -104,6 +103,7 @@ function createDelButton() {
                             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                         </svg>`;   
     delButton.classList.add("del-button");
+    delButton.type = "button";
     card.appendChild(delButton);
 }
 
@@ -115,10 +115,12 @@ function toggleReadClass (readButton, isRead) {
 function createReadButton(book) {
     const card = mainContent.firstElementChild;
     const readButton = document.createElement("button");
-    readButton.textContent = `${book.isRead}`;
+    readButton.type = "button";
+    dataRegister(book, readButton, "read");
     readButton.classList.add("read-button");
     toggleReadClass(readButton, book.isRead);
     card.appendChild(readButton);
+    
 }
 
 Book.prototype.changeReadStatus = function () {
@@ -151,8 +153,9 @@ form.addEventListener("submit", (e) => {
     console.log(myLibrary);
 
     insertNewBook(book);
-    createDelButton();
     createReadButton(book);
+    createDelButton();
+    
 
     form.reset();
     formDialog.close();
