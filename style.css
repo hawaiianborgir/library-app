@@ -157,10 +157,18 @@ input[type="tel"] {
 
 
 .read-button {
-    width: 40px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+
+    width: auto;
     height: 25px;
     border-radius: 3px;
 }
+.book-read{
+	font-size: 0.7rem;
+}
+
 .del-button {
 	/* relative to the .book-card */
 	position: absolute; 
