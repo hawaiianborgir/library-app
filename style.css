@@ -126,11 +126,15 @@ body {
 }
 .book-title {
 	color: var(--card-title-cl);
+	font-weight: 800;
+}
+.book-author,
+.book-year,
+.book-pages {
+	font-size: 0.9rem;
+	margin-left: 10px;
 }
 .read-button {
-	/* position: relative;
-	right: 0px;
-	bottom: 0px; */
 	display: block;
 	margin: 10px auto 0 auto;
     width: 300px;
@@ -147,12 +151,19 @@ body {
 	background-color: var(--read-bt-cl);
 	color: var(--white-txt);
 }
+.read-true:hover {
+    background-color: var(--read-bt-hover-cl);
+    transform: translateY(-2px);
+}
 .read-false {
 	background-color: var(--notread-bt-cl);
 	color: var(--notread-bt-txt-cl);
 	
 }
-
+.read-false:hover {
+    background-color: var(--notread-bt-hover-cl);
+    transform: translateY(-2px);
+}
 .del-button {
 	/* relative to the .book-card */
 	position: absolute; 
@@ -169,11 +180,7 @@ body {
 	height: 15px;
 	width: 15px;
 }
-.new-button:hover,
-.read-button:hover {
-    background-color: blanchedalmond;
-    transform: translateY(-2px);
-}
+
 .del-button:hover {
     background-color: rgb(128, 24, 24);
     transform: translateY(-2px);
