@@ -106,6 +106,11 @@ function createReadButton(book) {
     return readButton;
 }
 
+function changeReadClass (readButton, isRead) {
+    readButton.classList.toggle("read-true", isRead);
+    readButton.classList.toggle("read-false", !isRead)
+}
+
 Book.prototype.changeReadStatus = function () {
     if (this.isRead === true) {
         this.isRead = false;
@@ -160,16 +165,17 @@ mainContent.addEventListener("click", (e) => {
     const card = item.closest(".book-card");
     const cardId = card.dataset.bookId
     const bookIndex = myLibrary.findIndex(book => book.id === cardId);
+    const readButton = card.querySelector(".read-button");
     let bookReadStatus = myLibrary[bookIndex].isRead;
-    console.log(bookReadStatus);
     let readDisplay = card.querySelector(".book-read");
-    console.log(readDisplay);
 
     if (bookReadStatus) {
         myLibrary[bookIndex].changeReadStatus();
+        changeReadClass(readButton, myLibrary[bookIndex].isRead);
         readDisplay.textContent = "Read: ✗";
     } else {
         myLibrary[bookIndex].changeReadStatus();
+        changeReadClass(readButton, myLibrary[bookIndex].isRead);
         readDisplay.textContent = "Read: ✓";
     }
 })
