@@ -134,6 +134,10 @@ body {
 	font-size: 0.9rem;
 	margin-left: 10px;
 }
+.read-button, 
+.del-button {
+	border: 1px solid #d1d5db;
+}
 .read-button {
 	display: block;
 	margin: 10px auto 0 auto;
@@ -173,8 +177,9 @@ body {
     background-color: rgb(186, 62, 62);
     color: white;
     font-weight: 600;
-	height: 30px;
+	height: 29px;
     border-radius: 15px;
+	
 }
 .del-button svg {
 	height: 15px;
