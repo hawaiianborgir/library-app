@@ -93,22 +93,32 @@ function insertNewBook(book) {
 }
 
 function createDelButton() {
+    const card = mainContent.firstElementChild;
     const delButton = document.createElement("button");
-    delButton.textContent = "X";   
+    delButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M4 7l16 0" />
+                            <path d="M10 11l0 6" />
+                            <path d="M14 11l0 6" />
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                        </svg>`;   
     delButton.classList.add("del-button");
-    return delButton;
+    card.appendChild(delButton);
+}
+
+function toggleReadClass (readButton, isRead) {
+    readButton.classList.toggle("read-true", isRead);
+    readButton.classList.toggle("read-false", !isRead)
 }
 
 function createReadButton(book) {
+    const card = mainContent.firstElementChild;
     const readButton = document.createElement("button");
     readButton.textContent = `${book.isRead}`;
     readButton.classList.add("read-button");
-    return readButton;
-}
-
-function changeReadClass (readButton, isRead) {
-    readButton.classList.toggle("read-true", isRead);
-    readButton.classList.toggle("read-false", !isRead)
+    toggleReadClass(readButton, book.isRead);
+    card.appendChild(readButton);
 }
 
 Book.prototype.changeReadStatus = function () {
@@ -141,8 +151,10 @@ form.addEventListener("submit", (e) => {
     console.log(myLibrary);
 
     insertNewBook(book);
+    createDelButton();
+    createReadButton(book);
 
-    form.reset()
+    form.reset();
     formDialog.close();
 });
 
@@ -171,11 +183,11 @@ mainContent.addEventListener("click", (e) => {
 
     if (bookReadStatus) {
         myLibrary[bookIndex].changeReadStatus();
-        changeReadClass(readButton, myLibrary[bookIndex].isRead);
+        toggleReadClass(readButton, myLibrary[bookIndex].isRead);
         readDisplay.textContent = "Read: ✗";
     } else {
         myLibrary[bookIndex].changeReadStatus();
-        changeReadClass(readButton, myLibrary[bookIndex].isRead);
+        toggleReadClass(readButton, myLibrary[bookIndex].isRead);
         readDisplay.textContent = "Read: ✓";
     }
 })
