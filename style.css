@@ -105,22 +105,89 @@ body {
 .content {
 	grid-area: content;
 }
+.content-title {
+	padding: 20px 20px 0px 20px;
+}
 .main-content {
 	overflow-y: auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
 	gap: 20px;
-	
-	border: 2px solid red;
+	padding: 20px;
 }
 .book-card {
 	position: relative;
 
 	background-color: var(--card-bg-cl);
 	color: var(--card-txt-cl);
+	padding: 13px;
+	border-radius: 15px;
+	border-left: 8px solid var(--card-border-cl);
 }
 .book-title {
 	color: var(--card-title-cl);
+}
+.read-button {
+	/* position: relative;
+	right: 0px;
+	bottom: 0px; */
+	display: block;
+	margin: 10px auto 0 auto;
+    width: 300px;
+
+	min-width: auto;
+    height: 25px;
+    border-radius: 13px;
+}
+.book-read {
+	font-size: 0.7rem;
+	font-weight: 700;
+}
+.read-true {
+	background-color: var(--read-bt-cl);
+	color: var(--white-txt);
+}
+.read-false {
+	background-color: var(--notread-bt-cl);
+	color: var(--notread-bt-txt-cl);
+	
+}
+
+.del-button {
+	/* relative to the .book-card */
+	position: absolute; 
+	top: 5px;
+	right: 5px;
+
+
+    background-color: rgb(186, 62, 62);
+    color: white;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.del-button svg {
+	height: 15px;
+	width: 15px;
+}
+.new-button:hover,
+.read-button:hover {
+    background-color: blanchedalmond;
+    transform: translateY(-2px);
+}
+.del-button:hover {
+    background-color: rgb(128, 24, 24);
+    transform: translateY(-2px);
+}
+button:active {
+    transform: scale(0.98);
+}
+
+.new-button:hover,
+.read-button:hover,
+.del-button:hover,
+.yes-option > *:hover,
+.no-option > *:hover {
+    cursor: pointer;
 }
 
 
@@ -157,65 +224,3 @@ input[type="tel"] {
     margin: 0;
     box-sizing: border-box;
 }
-
-
-
-
-
-.read-button {
-	position: absolute;
-	right: 3px;
-	bottom: 3px;
-
-    width: auto;
-    height: 25px;
-    border-radius: 13px;
-}
-.book-read {
-	font-size: 0.7rem;
-	font-weight: 700;
-}
-.read-true {
-	background-color: var(--read-bt-cl);
-	color: var(--white-txt);
-}
-.read-false {
-	background-color: var(--notread-bt-cl);
-	color: var(--notread-bt-txt-cl);
-	
-}
-
-.del-button {
-	/* relative to the .book-card */
-	position: absolute; 
-	top: 0px;
-	right: 0px;
-
-
-    background-color: rgb(186, 62, 62);
-    color: white;
-    font-weight: 600;
-    border-radius: 3px;
-}
-
-.new-button:hover,
-.read-button:hover {
-    background-color: blanchedalmond;
-    transform: translateY(-2px);
-}
-.del-button:hover {
-    background-color: rgb(128, 24, 24);
-    transform: translateY(-2px);
-}
-button:active {
-    transform: scale(0.98);
-}
-
-.new-button:hover,
-.read-button:hover,
-.del-button:hover,
-.yes-option > *:hover,
-.no-option > *:hover {
-    cursor: pointer;
-}
-
