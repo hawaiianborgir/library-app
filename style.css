@@ -55,7 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* --RESET ENDS HERE-- */
 
-
 :root {
 	--white-txt: #ffffff;
 	--page-bg-cl: #f4efe4;
@@ -74,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 	--notread-bt-cl: #c9922e;
 	--notread-bt-hover-cl: #b07d22;
 	--notread-bt-txt-cl: ##2b2420;
+	--button-border-cl: #d1d5db;
 }
 
 body {
@@ -85,7 +85,8 @@ body {
 	height: 100dvh;
 	overflow: hidden;
     display: grid;
-    grid-template: 1fr 9fr / 1fr 4fr;
+	grid-template-columns: minmax(200px, 300px) minmax(400px, 1fr);
+    grid-template-rows: 70px minmax(0, 9fr);
     grid-template-areas: 
     	"header header"
       	"sidebar content";    
@@ -98,22 +99,33 @@ body {
   	grid-area: header;
   	background-color: var(--header-cl);
 }
+.logo-container {
+	text-decoration: none;
+	color: var(--page-bg-cl);
+}
+
 .sidebar {
   	grid-area: sidebar;
 	background-color: var(--sidebar-cl);
+	/* min-height: 0; */
 }
 .content {
 	grid-area: content;
+	min-height: 0;  /*I can be smaller than my content, so we can have height limitation for a scrollable child*/
+	display: flex;
+	flex-direction: column;
 }
 .content-title {
-	padding: 20px 20px 0px 20px;
+	padding: 20px 20px 20px 20px;
+	font-size: 1.3rem;
+	box-shadow: 2px 0px 5px 1px rgba(0, 0, 0, 0.2);
 }
 .main-content {
 	overflow-y: auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
 	gap: 20px;
-	padding: 20px;
+	padding: 10px 20px;
 }
 .book-card {
 	position: relative;
@@ -136,7 +148,7 @@ body {
 }
 .read-button, 
 .del-button {
-	border: 1px solid #d1d5db;
+	border: 1px solid var(--button-border-cl);
 }
 .read-button {
 	display: block;
