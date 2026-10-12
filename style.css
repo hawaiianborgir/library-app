@@ -81,6 +81,17 @@ h1, h2, h3, h4, h5, h6 {
 	--notread-bt-hover-cl: #b07d22;
 	--notread-bt-txt-cl: ##2b2420;
 	--button-border-cl: #d1d5db;
+
+	--dialog-bg: #fffdf8;
+	--dialog-border: #ddd2bd;
+	--dialog-title-txt: #2b2420;
+	--dialog-label-txt: #6b5f53;
+	--input-border: #8f8268;
+	--input-focus: #b8863b;
+	--invalid-cl: #a63d40;
+	--submit-bg: #2f5d50;
+	--submit-hover: #244a40;
+	--backdrop-cl: rgb(31 61 53 / 0.55);
 }
 
 body {
@@ -183,10 +194,6 @@ button {
 .sidebar output{
 	justify-self: center;
 }
-/* .sidebar p,
-.sidebar output {
-	border: 2px solid white;
-} */
 .content {
 	grid-area: content;
 	min-height: 0;  /*I can be smaller than my content, so we can have height limitation for a scrollable child*/
@@ -265,49 +272,38 @@ button {
     font-weight: 600;
 	height: 29px;
     border-radius: 15px;
-	
 }
 .del-button svg {
 	height: 15px;
 	width: 15px;
 }
-
 .del-button:hover {
     background-color: var(--del-btn-hover-cl);
     transform: translateY(-2px);
 }
-button:active {
-    transform: scale(0.98);
+
+dialog {
+	position: relative;
+	background-color: var(--dialog-bg);
+	border: 1px solid var(--dialog-border);
+	border-radius: 15px;
+	padding: 30px;
 }
-
-.new-button:hover,
-.read-button:hover,
-.del-button:hover,
-.yes-option > *:hover,
-.no-option > *:hover {
-    cursor: pointer;
+dialog::backdrop {
+	background-color: var(--backdrop-cl);
+	backdrop-filter: blur(2px);
 }
-
-
 .form-container {
     height: 400px;
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
     align-self: center;
-    border: 1px solid grey;
-    border-radius: 15px;
-    background-color: lightgray;
     justify-items: center;
     padding: 10px;
 }
-.caption{
-    text-align: center;
-}
-.new-button {
-    width: 200px;
-    height: 40px;
-    align-self: center;
-    border-radius: 10px;
+.caption {
+	text-align: center;
+	color: var(--dialog-label-txt);
 }
 .input-container {
     display: grid;
@@ -315,10 +311,45 @@ button:active {
     align-items: center;
     gap: 0px 35px;
 }
-input[type="text"],
-input[type="tel"] {
-    /* width: 150px; */
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+label {
+	color: var(--dialog-label-txt);
+}
+input {
+	background-color: var(--white-txt);
+	border: 1px solid var(--input-border);
+	border-radius: 3px;
+}
+input:focus-visible {
+	outline: 2px solid var(--input-focus);
+	outline-offset: 1px;
+	border-color: var(--input-focus);
+}
+input:user-invalid {
+	border: 2px solid var(--invalid-cl);
+}
+.new-button {
+	background-color: var(--submit-bg);
+    width: 200px;
+    height: 40px;
+    align-self: center;
+    border-radius: 10px;
+	color: var(--white-txt);
+	font-weight: 600;
+}
+.new-button:hover {
+	background-color: var(--submit-hover);
+	transform: translateY(-2px);
+}
+.close-button {
+	position: absolute; /* relative to dialog */
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	color: var(--del-btn-cl);
+	border: none;
+	font-size: 1.3rem;
+	font-weight: 400;
+}
+.close-button:hover {
+	transform: translateY(-2px);
 }
