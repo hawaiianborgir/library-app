@@ -92,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 	--submit-bg: #2f5d50;
 	--submit-hover: #244a40;
 	--backdrop-cl: rgb(31 61 53 / 0.55);
+	--checkbox-cl: #2f7a5f;
 }
 
 body {
@@ -318,6 +319,9 @@ input {
 	background-color: var(--white-txt);
 	border: 1px solid var(--input-border);
 	border-radius: 3px;
+}
+input[type="checkbox"] {
+	accent-color: var(--checkbox-cl);
 }
 input:focus-visible {
 	outline: 2px solid var(--input-focus);
