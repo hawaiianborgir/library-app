@@ -52,8 +52,26 @@ function totalBookCounter (arr) {
     const totalBook = arr.length;
     totalOutput.value = totalBook
 }
-totalBookCounter(myLibrary); //current book counter
+function readBookCounter (arr) {
+    let readBook = 0;
+    let notreadBook = 0;
+    
+    for (let item of arr) {
+        if (item.isRead) {
+            console.log("read");
+            readBook += 1;
+        } else {
+            console.log("not-read");
+            notreadBook += 1;
+        }
+    }
 
+    readOutput.value = readBook;
+    notReadOutput.value = notreadBook;
+}
+totalBookCounter(myLibrary); //current book counter
+readBookCounter(myLibrary); //current read book counter
+ 
 function insertNewCard() {
     const card = document.createElement("div")
     card.classList.add("book-card")
@@ -168,6 +186,7 @@ form.addEventListener("submit", (e) => {
     createReadButton(book);
     createDelButton();
     totalBookCounter(myLibrary);
+    readBookCounter(myLibrary);
 
     form.reset();
     formDialog.close();
@@ -184,6 +203,7 @@ mainContent.addEventListener("click", (e) => {
     myLibrary.splice(bookIndex,1);
     mainContent.removeChild(card);
     totalBookCounter(myLibrary);
+    readBookCounter(myLibrary);
 })
 
 mainContent.addEventListener("click", (e) => {
@@ -206,14 +226,11 @@ mainContent.addEventListener("click", (e) => {
         toggleReadClass(readButton, myLibrary[bookIndex].isRead);
         readDisplay.textContent = "Read: ✓";
     }
+
+    readBookCounter(myLibrary);
 })
 
 
 
-function readBookCounter (arr) {
-    arr.reduce((acc, num) => {
-        
-    })
-}
 
 

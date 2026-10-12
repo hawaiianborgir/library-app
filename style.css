@@ -92,7 +92,7 @@ body {
 	height: 100dvh;
 	overflow: hidden;
     display: grid;
-	grid-template-columns: minmax(200px, 300px) minmax(400px, 1fr);
+	grid-template-columns: minmax(240px, 300px) minmax(400px, 1fr);
     grid-template-rows: 70px minmax(0, 9fr);
     grid-template-areas: 
     	"header header"
@@ -166,8 +166,8 @@ button {
 .read-status,
 .notread-status {
 	color: var(--sidebar-cl);
-	font-size: 1.3rem;
-	font-weight: 600;
+	font-size: 1.2rem;
+	font-weight: 700;
 
 	border: none;
 	background-color: var(--sidebar-txt-cl);
