@@ -155,7 +155,38 @@ button {
 .sidebar {
   	grid-area: sidebar;
 	background-color: var(--sidebar-cl);
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 20px;
+	padding-top: 20px;
 }
+.total-status,
+.read-status,
+.notread-status {
+	color: var(--sidebar-cl);
+	font-size: 1.3rem;
+	font-weight: 600;
+
+	border: none;
+	background-color: var(--sidebar-txt-cl);
+	border-radius: 20px;
+	height: 50px;
+
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	align-content: center;
+	padding: 0 15px 0 50px;
+	margin: 0 20px;
+}
+.sidebar output{
+	justify-self: center;
+}
+/* .sidebar p,
+.sidebar output {
+	border: 2px solid white;
+} */
 .content {
 	grid-area: content;
 	min-height: 0;  /*I can be smaller than my content, so we can have height limitation for a scrollable child*/
