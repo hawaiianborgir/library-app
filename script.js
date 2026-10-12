@@ -55,7 +55,7 @@ function totalBookCounter (arr) {
 function readBookCounter (arr) {
     let readBook = 0;
     let notreadBook = 0;
-    
+
     for (let item of arr) {
         if (item.isRead) {
             console.log("read");
@@ -200,6 +200,11 @@ mainContent.addEventListener("click", (e) => {
     const card = item.closest(".book-card");
     const cardId = card.dataset.bookId
     const bookIndex = myLibrary.findIndex(book => book.id === cardId);
+    const bookTitle = myLibrary[bookIndex].title;
+
+    /*delete safeguard confirmation*/
+    if (!confirm(`Delete ${bookTitle}?`)) return;
+
     myLibrary.splice(bookIndex,1);
     mainContent.removeChild(card);
     totalBookCounter(myLibrary);
