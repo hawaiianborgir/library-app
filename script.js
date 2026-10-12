@@ -7,7 +7,12 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const yearInput = document.querySelector("#year");
 const pagesInput = document.querySelector("#pages");
-const formDialog = document.querySelector("#form-dialog")
+
+const formDialog = document.querySelector("#form-dialog");
+
+const totalOutput = document.querySelector(".total-output");
+const readOutput = document.querySelector(".read-output");
+const notReadOutput = document.querySelector(".notread-output");
 
 
 
@@ -41,6 +46,13 @@ addBookToLibrary("The Two Towers", "J.R.R. Tolkien", 352, 1954, true);
 addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, 1960, true);
 addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, 1813, false);
 addIdToCurrentBook()
+
+// Book Counter
+function totalBookCounter (arr) {
+    const totalBook = arr.length;
+    totalOutput.value = totalBook
+}
+totalBookCounter(myLibrary); //current book counter
 
 function insertNewCard() {
     const card = document.createElement("div")
@@ -155,7 +167,7 @@ form.addEventListener("submit", (e) => {
     insertNewBook(book);
     createReadButton(book);
     createDelButton();
-    
+    totalBookCounter(myLibrary);
 
     form.reset();
     formDialog.close();
@@ -171,6 +183,7 @@ mainContent.addEventListener("click", (e) => {
     const bookIndex = myLibrary.findIndex(book => book.id === cardId);
     myLibrary.splice(bookIndex,1);
     mainContent.removeChild(card);
+    totalBookCounter(myLibrary);
 })
 
 mainContent.addEventListener("click", (e) => {
@@ -194,3 +207,13 @@ mainContent.addEventListener("click", (e) => {
         readDisplay.textContent = "Read: ✓";
     }
 })
+
+
+
+function readBookCounter (arr) {
+    arr.reduce((acc, num) => {
+        
+    })
+}
+
+
